@@ -1,22 +1,28 @@
-// program for binary operator overloading ... to concatinate two strings
+// one base class one derived class. (we use virtual functions when we encounter  (Diamond problem in inheritance) but here
+// only we have 1 base class and 1 derived class so why are we using virtual function? => we are using virtual function here because
+                        // here we want to do function override (Late binding)  ).
 
-//write a c++ program to add two complex numbers with operator overloading.
+
 #include<iostream>
 using namespace std;
 
-class String_Concat{
-string str_1, str_2;
+class Shape{
 public:
-
-   String_Concat(string r=0): str_1(r){};
-    String_Concat operator+(const String_Concat &s){                // operator function
-    return String_Concat(str_1 + str_2);
+    virtual void draw(){               //now virtual
+    cout<<"Generic shape";
     }
-    void show() { cout << s ; }
 };
 
-int main(){
-String_Concat a("hi"), b("bye");
-String_Concat s = a + b;       // calls a.operator+(b)
-s.show();
+class Circle: public Shape{
+public:
+    void draw() override
+    {
+    cout<<"Circle";
+    }
+    };
+
+int main()
+{
+    Shape *s= new Circle();
+    s->draw();            //Output: "Circle" <-- Late binding!
 }
