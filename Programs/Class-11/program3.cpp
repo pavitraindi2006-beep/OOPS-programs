@@ -1,27 +1,53 @@
-//write a cpp program to handle multiplication of 2 variables using exceptions such that the product is non-zero...
+// one base class three derived class.      same as prog_2 but  //Array of pointer objects
+
+
 #include<iostream>
 using namespace std;
+
+class Shape{
+public:
+    virtual void draw(){               //now virtual
+    cout<<"Generic shape";
+    }
+};
+
+class Circle: public Shape{
+public:
+    void draw()
+    {
+    cout<<"Circle";
+    }
+    };
+
+    class Square: public Shape{
+public:
+    void draw()
+    {
+    cout<<"Square";
+    }
+    };
+
+    class Triangle: public Shape{
+public:
+    void draw()
+    {
+    cout<<"Triangle";
+    }
+    };
+
 int main()
 {
-    int x=8,y=0;
-    cout<<"Before try \n";
-    try{
-    cout<<"Inside try \n";
-    if(x==0){
-       throw x;
-       cout<<"After throw"<<endl; //never executed
-    }
-     else if(y==0){
-        throw y;
-         cout<<"After throw"<<endl; //never executed
-     }
-    }
-    catch(int x){
-    cout<<"Exception Caught and x= "<<x<<endl;        //  this or
-    }
-     catch(int y){
-    cout<<"Exception Caught and y= "<<y<<endl;               // this will be executed
-    }
-    cout<<"After Catch"<<endl;
-    return 0;
+//    Shape *s1= new Circle();
+//    Shape *s2= new Square();
+//    Shape *s3= new Triangle();
+//    s1->draw();            //Output: "Circle" <-- Late binding!
+//    s2->draw();
+//    s3->draw();
+//
+
+Shape *shapes[3]={new Circle(),new Square(),new Triangle()};
+for (int i=0;i<3;i++)
+    shapes[i]->draw();
+
+
 }
