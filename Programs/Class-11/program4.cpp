@@ -1,29 +1,39 @@
-//write a cpp program to handle multiplication of 2 variables using exceptions such that the product is non-zero...
- 
+// write a c++ program with classes abstract class vehicle and derived class car and bike to display features of vehicle such as no.of wheels, mileage
+//, fuel capacity
 
 #include<iostream>
 using namespace std;
+
+class Vehicle{
+public:
+    float mileage=1.1;
+    virtual float disp_mileage()=0;
+
+};
+
+class Car: public Vehicle{
+public: float disp_mileage()
+{
+    return mileage*2;
+}
+};
+
+class Bike: public Vehicle{
+public: float disp_mileage()
+{
+    return mileage*4;
+}
+};
+
 int main()
 {
-    int x=2,y=0;
-    cout<<"Before try \n";
-    try{
-    cout<<"Inside try \n";
-    if(x==0){
-       throw x;
-       cout<<"After throw"<<endl; //never executed
-    }
-     else if(y==0){
-        throw 2.50;
-         cout<<"After throw"<<endl; //never executed
-     }
-    }
-    catch(int x){
-    cout<<"Exception Caught and x= "<<x<<endl;        //  this or
-    }
-     catch(double z){
-    cout<<"Exception Caught and y= "<<z<<endl;               // this will be executed
-    }
-    cout<<"After Catch"<<endl;
+    float x;
+    Vehicle *v1, *v2;
+    Car c;
+    Bike b;
+    v1=&c;
+    v2=&b;
+    x=v1->disp_mileage();
+    cout <<x;
     return 0;
 }
