@@ -1,20 +1,46 @@
-// Exception Handling.
+// one base class three derived class.
+
+
 #include<iostream>
 using namespace std;
+
+class Shape{
+public:
+    virtual void draw(){               //now virtual
+    cout<<"Generic shape";
+    }
+};
+
+class Circle: public Shape{
+public:
+    void draw()
+    {
+    cout<<"Circle";
+    }
+    };
+
+    class Square: public Shape{
+public:
+    void draw()
+    {
+    cout<<"Square";
+    }
+    };
+
+    class Triangle: public Shape{
+public:
+    void draw()
+    {
+    cout<<"Triangle";
+    }
+    };
+
 int main()
 {
-    int x=-1;
-    cout<<"Before try \n";
-    try{
-    cout<<"Inside try \n";
-    if(x<0){
-       throw x;
-       cout<<"After throw"<<"(never executed)\n";
-    }
-    }
-    catch(int x){
-    cout<<"Exception Caught and x= "<<x<<endl;
-    }
-    cout<<"After Catch"<<"(will be executed) \n";
-    return 0;
+    Shape *s1= new Circle();
+    Shape *s2= new Square();
+    Shape *s3= new Triangle();
+    s1->draw();            //Output: "Circle" <-- Late binding!
+    s2->draw();
+    s3->draw();
 }
