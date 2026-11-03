@@ -1,24 +1,19 @@
-// write a cpp program for exception handling the divide by zero error...
+//write a c++ program to add two complex numbers with operator overloading.
 #include<iostream>
 using namespace std;
 
-double division(int a,int b){
-if(b==0){
-    throw "Division by zero condition!!!";
+class Complex{
+float re, im;
+public:
+    Complex(float r=0,float i=0): re(r),im(i){};
+    Complex operator+(const Complex &c){                // operator function
+    return Complex(re + c.re, im +c.im);
     }
-    return(a/b);
-}
+    void show() { cout << re <<" + " << im <<"i"; }
+};
 
-int main()
-{
- int x=50,y=0;
- double z=0;
- try{
- z=division(x,y);
- cout<<z<<endl;
- }
- catch(const char*msg){
- cout<<msg<<endl;
- }
- return 0;
+int main(){
+Complex a(2,3), b(4,5);
+Complex c = a + b;       // calls a.operator+(b)
+c.show();            //    Output: 6 + 8i
 }
